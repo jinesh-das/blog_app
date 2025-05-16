@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+    font-family: 'HeroFont';
+    src: url('../public/fonts/myfont.woff')format('woff');
+    font-weight: normal;
+    font-style: normal;
+    
+}
+

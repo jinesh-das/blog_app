@@ -36,6 +36,7 @@ const ReadBlogs = () => {
     const isFollowingUser = following?.includes(blogData?.creator?._id);
     
    
+    console.log(loggedInUser);
     
    
    
@@ -159,12 +160,12 @@ const ReadBlogs = () => {
                     </div>
                     <div className='w-full flex items-center gap-16'>
                         <div className='flex items-center gap-3'>
-                            <Link to={`/@${blogData.creator?.username}`} className='w-[50px] h-[50px] rounded-full overflow-hidden bg-black object-center object-cover '>
+                            <Link to={loggedInUser ? `/@${blogData?.creator?.username}`:""} className='w-[50px] h-[50px] rounded-full overflow-hidden bg-black object-center object-cover '>
                                 <img className='w-full ' src={`${apiUrl}/${blogData?.creator?.profilePic}`||`https://api.dicebear.com/9.x/initials/svg?seed=${blogData.creator?.name}`} alt="" />
                             </Link>
                             <div>
                                 <div className='flex items-center gap-3'>
-                                <Link to={`/@${blogData.creator?.username}`} className='text-lg hover:underline'>{blogData.creator?.name}</Link>
+                                <Link to={loggedInUser ? `/@${blogData?.creator?.username}`: "" } className='text-lg hover:underline'>{blogData.creator?.name}</Link>
                                 <button onClick={handleFollow} className= {` rounded-4xl py-1 px-4 cursor-pointer text-base font-semibold bg-black dark:bg-white ${isFollowing ? "bg-transparent text-black border-2 border-gray-300" : "bg-black dark:bg-white dark:text-black text-white"}`}>{isFollowing ? "Following" :"Follow"}</button>
                                 </div>
                                 <p className='text-sm'>{moment(blogData.createdAt).fromNow()}</p>
